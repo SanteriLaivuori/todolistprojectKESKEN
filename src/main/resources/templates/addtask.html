@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<title>To-do list</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add a task</h1>
+	<div>
+		<form th:object="${book}" th:action="@{save}" action="#" method="post">
+
+			<label for="author">Task</label> <input type="text" id="task"
+				th:field="*{task}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="title">Type</label> <input type="text" id="tasktype"
+				th:field="*{tasktype}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="isbn">Date</label> <input type="text" id="date"
+				th:field="*{date}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+
+			<label for="tasktypelist">Task type</label> <select id="tasktypelist"
+				th:field="*{tasktype}" class="form-control">
+				<option th:each="tasktype: ${tasktypes}"
+					th:value="${tasktype.tasktypeid}" th:text="${tasktype.name}"></option>
+			</select> <input type="submit" class="btn btn-success" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>
